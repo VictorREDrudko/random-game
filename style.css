@@ -1,0 +1,123 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:active, :hover, :focus {
+	outline: 0;
+	outline-offset: 0;
+}
+
+
+.wrapper {
+	width: 80%;
+	background-color: #e9baba;
+	margin: 20px auto;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.style_card {
+	padding: 20px;
+	width: 150px;
+	height: 250px;
+	background-color: #650707;
+	margin: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.5s;
+	font-size: 0;
+}
+
+.style_card:hover {
+	background-color: #ec8787;
+}
+
+.style_card:active {
+	background-color: #b91313;
+}
+
+.open {
+	font-size: 28px;
+	text-align: center;
+	background-color: #4e68ee;
+	cursor: default;
+}
+
+.open:hover {
+	background-color: #4e68ee;
+}
+
+.win {
+	font-size: 28px;
+	text-align: center;
+	background-color: #23ec6d;
+	cursor: default;
+}
+
+.win:hover {
+	background-color: #23ec6d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer {
+	width: 98%;
+	height: 60px;
+	background-color: #e06ada;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.block_link_git {
+	width: 40px;
+	height: 40px;
+	margin: 5px 0 0 20px;
+}
+
+.block_link_git img {
+	width: 40px;
+	height: 40px;
+}
+
+.block_link_rss {
+	width: 90px;
+	height: 40px;
+	margin: 5px 20px 0 0;
+}
+
+.block_link_rss img {
+	width: 90px;
+	height: 40px;
+}
+
+.yer {
+	height: 50px;
+}
+
+.yer p {
+	font-size: 24px;
+	font-weight: 600;
+	font-style: normal;
+	padding: 10px 0 0 0;
+} 
