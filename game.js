@@ -84,6 +84,7 @@ function playGame (containerCards, cardsCount) {
 			if (cardsArray.length === document.querySelectorAll('.win').length) {
 				setTimeout(() => {
 					containerCards.innerHTML = '';
+					
 					alert('ПОБЕДА!!!');
 					let cardsCount = Number(prompt('Ввести количество пар', 4));
 					playGame(containerCards, cardsCount);
