@@ -16,8 +16,12 @@ body {
 .container {
 	background-color: #55dd6c;
 	width: 75%;
+	height: 100vh;
 	margin: 0 auto;
-	background: url('img/ground.jpeg');
+	background: url('img/ground.jpeg') 0 0/ 100% 100% no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 
@@ -30,8 +34,8 @@ body {
 	display: flex;
 	justify-content: space-between;
 	height: 50px;
-	margin: 0 auto;
-	padding: 5px;
+	margin: 0px auto;
+	padding: 20px 5px 5px 5px;
 	color: rgb(118, 217, 245);
 }
 
@@ -61,7 +65,7 @@ h2 {
 	margin: 8px 10px 0 20px;
 }
 
-.header__level select {
+.header__level p {
 	font-size: 24px;
 	width: 45px;
 	height: 45px;
@@ -70,15 +74,14 @@ h2 {
 	border-radius: 10px;
 	border: 1px solid #4e68ee;
 	margin: 2px 0 0 0;
+	padding: 5px 0 0 0;
+	text-align: center;
 }
 
-.header__level select:hover {
-	color: rgb(61, 17, 183);
-	border: 1px solid #8193f1;
-	box-shadow: 5px 5px 5px rgb(67, 184, 238);
+.header__time p {
+	margin: 10px 20px 0 0;
+	font-size: 22px;
 }
-
-
 
 
 
@@ -98,8 +101,8 @@ h2 {
 .style_card {
 	padding: 20px;
 	width: 150px;
-	height: 250px;
-	background-color: #650707;
+	height: 100px;
+	background-color: #4e0253;
 	margin: 5px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -108,7 +111,7 @@ h2 {
 }
 
 .style_card:hover {
-	background-color: #ec8787;
+	background-color: #73aff0;
 }
 
 .style_card:active {
@@ -155,9 +158,9 @@ h2 {
 
 
 footer {
-	width: 98%;
+	width: 100%;
 	height: 60px;
-	background-color: #e06ada;
+	background-color: rgba(255, 255, 255, 0.2);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

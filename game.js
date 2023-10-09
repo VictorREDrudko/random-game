@@ -1,18 +1,39 @@
 // Контейнер с карточками
 const containerCards = document.querySelector('.wrapper');
 
+const levelGame = document.querySelector('.level__game');
+const time = document.querySelector('.time');
+
 
 
 // Возобнавление игры
 function playGame (containerCards, cardsCount) {
+	let seconds = 0;
+	let minutes = 0;
+	let interval = 0;
+
+	function updateTime () {
+		seconds++;
+		time.textContent = seconds;
+	}
+
+	// Функция запуска секундомера
+	function startTimeGame () {
+		interval = setInterval(updateTime, 1000);
+	}
+
+
+
 	// Хранение данных 2-ух открытых карточек
 	let cardFirst = null;
 	let cardSecond = null;
 	// Массив карточек
 	const cardsArray = [];
 
+	levelGame.textContent = cardsCount;
+
 	// Заполнение массива карточек
-	for (let i = 1; i <= cardsCount; i++) {
+	for (let i = 1; i <= cardsCount * 4; i++) {
 		cardsArray.push(i, i)
 	}
 
@@ -31,8 +52,8 @@ function playGame (containerCards, cardsCount) {
 		cardsArray[indexRandom] = indexTemp;
 	}
 
-
-
+	
+	
 	// Создание карточек
 	for (const cardsCount of cardsArray) {
 		// создадим карточку
@@ -86,7 +107,8 @@ function playGame (containerCards, cardsCount) {
 					containerCards.innerHTML = '';
 					
 					alert('ПОБЕДА!!!');
-					let cardsCount = Number(prompt('Ввести количество пар', 4));
+					
+					let cardsCount = Number(prompt('Выберете уровнь игры', 1));
 					playGame(containerCards, cardsCount);
 				}, 600);
 			}
@@ -95,8 +117,10 @@ function playGame (containerCards, cardsCount) {
 }
 
 // Счетчик количества пар карточек
-let cardsCount = Number(prompt('Ввести количество пар', 4));
+let cardsCount = Number(prompt('Выберете уровнь игры', 1));
 
 playGame(containerCards, cardsCount);
+
+
 
 
