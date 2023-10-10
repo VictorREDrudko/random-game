@@ -78,8 +78,14 @@ h2 {
 	text-align: center;
 }
 
-.header__time p {
+.header__time {
+	display: flex;
+	justify-content: start;
+	width: 60px;
 	margin: 10px 20px 0 0;
+}
+
+.header__time p {
 	font-size: 22px;
 }
 
@@ -100,8 +106,8 @@ h2 {
 
 .style_card {
 	padding: 20px;
-	width: 150px;
-	height: 100px;
+	width: 120px;
+	height: 80px;
 	background-color: #4e0253;
 	margin: 5px;
 	border-radius: 5px;

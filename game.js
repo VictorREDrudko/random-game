@@ -2,7 +2,36 @@
 const containerCards = document.querySelector('.wrapper');
 
 const levelGame = document.querySelector('.level__game');
-const time = document.querySelector('.time');
+const sec = document.querySelector('.time_sec');
+const min = document.querySelector('.time_minutes');
+let n = 1;
+
+
+
+// Проигрование звука
+function clock() {
+	let audio = new Audio(); 
+	audio.src = 'sound/clock.mp3';
+	audio.autoplay = true; 
+}
+
+function click() {
+	let audio = new Audio(); 
+	audio.src = 'sound/click.mp3';
+	audio.autoplay = true;
+}
+
+// function soundGame() {
+// 	let audio = new Audio(); 
+// 	audio.src = 'sound/game.mp3';
+// 	audio.autoplay = true;
+// }
+
+function winGame() {
+	let audio = new Audio(); 
+	audio.src = 'sound/win.mp3';
+	audio.autoplay = true;
+}
 
 
 
@@ -10,17 +39,43 @@ const time = document.querySelector('.time');
 function playGame (containerCards, cardsCount) {
 	let seconds = 0;
 	let minutes = 0;
-	let interval = 0;
+	let interval;
 
 	function updateTime () {
 		seconds++;
-		time.textContent = seconds;
+		sec.textContent = seconds;
+		if (seconds > 59) {
+			minutes++;
+			min.innerHTML = '0' + minutes
+			seconds = 0
+		}
+
+		if (seconds < 10) {
+			sec.innerHTML = '0' + seconds
+		}
+
+		if (minutes === 5) {
+			setTimeout(() => {
+				containerCards.innerHTML = '';
+				clearInterval(interval);
+				seconds = 0;
+				minutes = 0;
+				min.innerHTML = '00';
+				sec.innerHTML = '00';
+				alert('ПОРАЖЕНИЕ!!! ВРЕМЯ ВЫШЛО!!!');
+				
+				let cardsCount = Number(prompt('Выберете уровнь игры', 1));
+				playGame(containerCards, cardsCount);
+			}, 100);
+		}
 	}
 
 	// Функция запуска секундомера
 	function startTimeGame () {
 		interval = setInterval(updateTime, 1000);
 	}
+	clearInterval(interval);
+	startTimeGame () 
 
 
 
@@ -68,6 +123,7 @@ function playGame (containerCards, cardsCount) {
 
 		// клик по карточке
 		card.addEventListener("click", () => {
+			clock()
 			// исключение клика по одной и той же карточке
 			if (card.classList.contains('open') || card.classList.contains('win')) {
 				alert('Эта карточка уже открыта');
@@ -96,6 +152,7 @@ function playGame (containerCards, cardsCount) {
 				let cardSecondNumber = cardSecond.textContent;
 
 				if (cardFirstNumber === cardSecondNumber) {
+					click();
 					cardFirst.classList.add('win');
 					cardSecond.classList.add('win');
 				}
@@ -103,11 +160,23 @@ function playGame (containerCards, cardsCount) {
 
 			// Завершение игры
 			if (cardsArray.length === document.querySelectorAll('.win').length) {
+				winGame();
 				setTimeout(() => {
+					let resultGame = {level: `${levelGame.textContent}`, time: `${min.textContent}:${sec.textContent}`};
+					
+					localStorage.setItem(String(n), JSON.stringify(resultGame));
+					n = n + 1;
+					if (n > 10) {
+						n = 1;
+					}
+
 					containerCards.innerHTML = '';
-					
-					alert('ПОБЕДА!!!');
-					
+					clearInterval(interval);
+					alert(`ПОБЕДА!!! Уровень: ${levelGame.textContent}, Время: ${min.textContent}:${sec.textContent}`);
+					seconds = 0;
+					minutes = 0;
+					min.innerHTML = '00';
+					sec.innerHTML = '00';
 					let cardsCount = Number(prompt('Выберете уровнь игры', 1));
 					playGame(containerCards, cardsCount);
 				}, 600);
@@ -118,7 +187,6 @@ function playGame (containerCards, cardsCount) {
 
 // Счетчик количества пар карточек
 let cardsCount = Number(prompt('Выберете уровнь игры', 1));
-
 playGame(containerCards, cardsCount);
 
 
