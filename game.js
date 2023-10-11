@@ -113,6 +113,8 @@ function playGame (containerCards, cardsCount) {
 	for (const cardsCount of cardsArray) {
 		// создадим карточку
 		let card = document.createElement('div');
+		let flag = document.createElement('img');
+		
 		card.textContent = cardsCount;
 
 		// добавляем класс карточке для стилизации
@@ -120,6 +122,16 @@ function playGame (containerCards, cardsCount) {
 
 		// добавляем карточку в контейнер
 		containerCards.append(card);
+
+		if (cardsCount) {
+			flag.src = `img/${cardsCount}.png`;
+			flag.alt = 'flag';
+			flag.classList.add('flag-img');
+			card.append(flag);
+		}
+
+
+
 
 		// клик по карточке
 		card.addEventListener("click", () => {
@@ -134,11 +146,13 @@ function playGame (containerCards, cardsCount) {
 			if (cardFirst !== null && cardSecond !== null) {
 				cardFirst.classList.remove('open');
 				cardSecond.classList.remove('open');
+				flag.classList.remove('open-img');
 				cardFirst = null;
 				cardSecond = null;
 			}
 
 			card.classList.add('open');
+			flag.classList.add('open-img');
 
 			if (cardFirst === null) {
 				cardFirst = card;
