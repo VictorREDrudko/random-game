@@ -1,1 +1,1 @@
-https://VictorREDrudko.github.io/random-game/index.html
+#random-game
