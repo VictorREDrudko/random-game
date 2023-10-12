@@ -82,6 +82,8 @@ function playGame (containerCards, cardsCount) {
 	// Хранение данных 2-ух открытых карточек
 	let cardFirst = null;
 	let cardSecond = null;
+	let cardFirstImg = null;
+	let cardSecondImg = null;
 	// Массив карточек
 	const cardsArray = [];
 
@@ -98,10 +100,8 @@ function playGame (containerCards, cardsCount) {
 	for (let i = 0; i < cardsArray.length; i++) {
 		// создаем выборочный индекс
 		let indexRandom = Math.floor(Math.random() * cardsArray.length);
-
 		// создаем временную переменную
 		let indexTemp = cardsArray[i];
-
 		// перемешиваем индексы массива карточек
 		cardsArray[i] = cardsArray[indexRandom];
 		cardsArray[indexRandom] = indexTemp;
@@ -138,7 +138,6 @@ function playGame (containerCards, cardsCount) {
 			clock()
 			// исключение клика по одной и той же карточке
 			if (card.classList.contains('open') || card.classList.contains('win')) {
-				alert('Эта карточка уже открыта');
 				return
 			}
 
@@ -146,9 +145,12 @@ function playGame (containerCards, cardsCount) {
 			if (cardFirst !== null && cardSecond !== null) {
 				cardFirst.classList.remove('open');
 				cardSecond.classList.remove('open');
-				flag.classList.remove('open-img');
+				cardFirstImg.classList.remove('open-img');
+				cardSecondImg.classList.remove('open-img');
 				cardFirst = null;
 				cardSecond = null;
+				cardFirstImg = null;
+				cardSecondImg = null;
 			}
 
 			card.classList.add('open');
@@ -156,8 +158,10 @@ function playGame (containerCards, cardsCount) {
 
 			if (cardFirst === null) {
 				cardFirst = card;
+				cardFirstImg = flag;
 			} else {
 				cardSecond = card;
+				cardSecondImg = flag;
 			}
 
 			// сравнение карточек
@@ -169,6 +173,8 @@ function playGame (containerCards, cardsCount) {
 					click();
 					cardFirst.classList.add('win');
 					cardSecond.classList.add('win');
+					cardFirstImg.classList.add('win-img');
+					cardSecondImg.classList.add('win-img');
 				}
 			}
 
@@ -200,8 +206,17 @@ function playGame (containerCards, cardsCount) {
 }
 
 // Счетчик количества пар карточек
-let cardsCount = Number(prompt('Выберете уровнь игры', 1));
-playGame(containerCards, cardsCount);
+let cardsCount = Number(prompt('Выберете уровнь игры (от 1 до 6)', 1));
+if (cardsCount === 1 || cardsCount === 2 || cardsCount === 3 || cardsCount === 4 || cardsCount === 5 || cardsCount === 6) {
+	playGame(containerCards, cardsCount);
+} else {
+	cardsCount = Number(prompt('Выберете КОРРЕКТНЫЙ уровнь игры (от 1 до 6)', 1));
+	if (cardsCount !== 1 || cardsCount !== 2 || cardsCount !== 3 || cardsCount !== 4 || cardsCount !== 5 || cardsCount !== 6) {
+		cardsCount = Number(alert('ОШИБКА! Вы ввели НЕ КОРРЕКТНЫЙ уровнь игры (перезагрузите страницу)'))
+	}
+	playGame(containerCards, cardsCount);
+}
+
 
 
 
