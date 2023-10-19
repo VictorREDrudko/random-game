@@ -6,7 +6,16 @@ const sec = document.querySelector('.time_sec');
 const min = document.querySelector('.time_minutes');
 let n = 1;
 
-
+const res1 = document.querySelector('.result1');
+const res2 = document.querySelector('.result2');
+const res3 = document.querySelector('.result3');
+const res4 = document.querySelector('.result4');
+const res5 = document.querySelector('.result5');
+const res6 = document.querySelector('.result6');
+const res7 = document.querySelector('.result7');
+const res8 = document.querySelector('.result8');
+const res9 = document.querySelector('.result9');
+const res10 = document.querySelector('.result10');
 
 // Проигрование звука
 function clock() {
@@ -184,11 +193,37 @@ function playGame (containerCards, cardsCount) {
 				setTimeout(() => {
 					let resultGame = {level: `${levelGame.textContent}`, time: `${min.textContent}:${sec.textContent}`};
 					
+
+
 					localStorage.setItem(String(n), JSON.stringify(resultGame));
+					if (n === 1) {res1.textContent = localStorage.getItem(1).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 2) {res2.textContent = localStorage.getItem(2).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 3) {res3.textContent = localStorage.getItem(3).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 4) {res4.textContent = localStorage.getItem(4).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 5) {res5.textContent = localStorage.getItem(5).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 6) {res6.textContent = localStorage.getItem(6).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 7) {res7.textContent = localStorage.getItem(7).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 8) {res8.textContent = localStorage.getItem(8).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 9) {res9.textContent = localStorage.getItem(9).replace(/\*|{|}|"|,|\$/g, ' ')};
+					if (n === 10) {res10.textContent = localStorage.getItem(10).replace(/\*|{|}|"|,|\$/g, ' ')};
 					n = n + 1;
 					if (n > 10) {
 						n = 1;
 					}
+
+
+
+					
+					// res2.textContent = localStorage.getItem(2).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res3.textContent = localStorage.getItem(3).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res4.textContent = localStorage.getItem(4).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res5.textContent = localStorage.getItem(5).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res6.textContent = localStorage.getItem(6).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res7.textContent = localStorage.getItem(7).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res8.textContent = localStorage.getItem(8).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res9.textContent = localStorage.getItem(9).replace(/\*|{|}|"|,|\$/g, ' ')
+					// res10.textContent = localStorage.getItem(10).replace(/\*|{|}|"|,|\$/g, ' ')
+
 
 					containerCards.innerHTML = '';
 					clearInterval(interval);
@@ -217,7 +252,16 @@ if (cardsCount === 1 || cardsCount === 2 || cardsCount === 3 || cardsCount === 4
 	playGame(containerCards, cardsCount);
 }
 
-
+res1.textContent = localStorage.getItem(1).replace(/\*|{|}|"|,|\$/g, ' ')
+res2.textContent = localStorage.getItem(2).replace(/\*|{|}|"|,|\$/g, ' ')
+res3.textContent = localStorage.getItem(3).replace(/\*|{|}|"|,|\$/g, ' ')
+res4.textContent = localStorage.getItem(4).replace(/\*|{|}|"|,|\$/g, ' ')
+res5.textContent = localStorage.getItem(5).replace(/\*|{|}|"|,|\$/g, ' ')
+res6.textContent = localStorage.getItem(6).replace(/\*|{|}|"|,|\$/g, ' ')
+res7.textContent = localStorage.getItem(7).replace(/\*|{|}|"|,|\$/g, ' ')
+res8.textContent = localStorage.getItem(8).replace(/\*|{|}|"|,|\$/g, ' ')
+res9.textContent = localStorage.getItem(9).replace(/\*|{|}|"|,|\$/g, ' ')
+res10.textContent = localStorage.getItem(10).replace(/\*|{|}|"|,|\$/g, ' ')
 
 
 
